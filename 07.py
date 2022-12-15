@@ -17,8 +17,11 @@ for line in lines:
                 continue # can't go any lower than root.
             else:
                 pointer = '/'.join(pointer.split('/')[:-2]) + '/'
+            print(f'Moved down to {pointer}')
         else:
+            print(line)
             pointer += line.split(' ')[2] + '/'
+            print(f'Moved up into {pointer}')
         #print('Moved into ' + pointer)
     elif line[0] == 'd': # it is a directory
         tree[pointer+line.split(' ')[1]+'/'] = 'dir'
@@ -28,9 +31,10 @@ for line in lines:
         tree[pointer+line.split(' ')[1]] = line.split(' ')[0]
         #print('Saw a file ' + pointer+line.split(' ')[1])
 
-for f in tree:
-    print(f,tree[f])
-#print(directories)
+#for f in tree:
+#    print(f,tree[f])
+for d in directories:
+    print(d)
 
 # calculate the sizes of each directory
 outs = 0
